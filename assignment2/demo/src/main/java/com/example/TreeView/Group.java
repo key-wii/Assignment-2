@@ -41,10 +41,10 @@ public class Group implements TreeViewInterface {
             }
         }
     }
-    public void addUser(User newUser) {
+    public void addUser(DefaultMutableTreeNode newUser) {
         this.groupUsers.add(newUser);
     }
-    public void addGroup(Group newGroup) {
+    public void addGroup(DefaultMutableTreeNode newGroup) {
         this.groupUsers.add(newGroup);
     }
     public User getUser(String userID) {

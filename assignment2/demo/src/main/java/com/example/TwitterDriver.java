@@ -34,7 +34,7 @@ public class TwitterDriver extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Admin adminControlPanel = new Admin(); //bug on this line
+        Admin adminControlPanel = new Admin(); //bugs are always on this line
         Box adminView = adminControlPanel.getAdminControlPanel();
         
         /*JPanel contentPane = new JPanel(new BorderLayout());

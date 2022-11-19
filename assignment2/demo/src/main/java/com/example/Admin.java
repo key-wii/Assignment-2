@@ -39,7 +39,7 @@ public class Admin {
         treeView.setEditable(true);
         treeView.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         treeView.setShowsRootHandles(true);
-        rootGroup.addGroup(treeView);
+        //rootGroup.addGroup(treeView);
         
         JButton butAddUser = new JButton("Add User");
         JTextField UserIDText = new JTextField("Enter User ID");
@@ -51,7 +51,8 @@ public class Admin {
                     //showMessageDialog(null, "This User is taken"); UNCOMMENT THIS LATER
                 //} UNCOMMENT THIS LATER
                 //else {
-                    User user = new User(newUserInput);
+                    //User user = new User(newUserInput);
+                    DefaultMutableTreeNode user = new DefaultMutableTreeNode(newUserInput);
                     ((Group) selectedUser.getUserObject()).addUser(user);
                     //selectedUser.getChildren().add(new TreeItem<>(user));
                 //} UNCOMMENT THIS LATER
@@ -65,7 +66,8 @@ public class Admin {
                 DefaultMutableTreeNode selectedGroup = new DefaultMutableTreeNode(treeView.getSelectionModel().getSelectionPath());
                 String newGroup = String.valueOf(GroupIDText.getText());
             
-                Group group = new Group(newGroup); //maybe should be DefaultMutableTreeNode instead?
+                //Group group = new Group(newGroup);
+                DefaultMutableTreeNode group = new DefaultMutableTreeNode(newGroup);
                 ((Group) selectedGroup.getUserObject()).addGroup(group);
             }
         });
@@ -149,8 +151,8 @@ public class Admin {
         bottomButtons.add(positivesBox);
 
         Box allButtons = new Box(1);
-        allButtons.add(topButtons);
-        allButtons.add(bottomButtons);
+        //allButtons.add(topButtons);
+        //allButtons.add(bottomButtons);
         userBox.add(butUserView);
         
         menuBox = userBox;
