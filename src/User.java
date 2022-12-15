@@ -9,6 +9,7 @@ public class User implements CompositeUser
 {
     //Unique user id
     private String userID;
+    private long creationTime;
 
     //List of following
     private ArrayList<User> following;
@@ -27,6 +28,7 @@ public class User implements CompositeUser
         this.followers = new ArrayList<User>();
         this.message = new ArrayList<String>();
         this.newsFeed = new Message();
+        this.creationTime = System.currentTimeMillis();
     }
 
     //Accessor methods
@@ -104,5 +106,9 @@ public class User implements CompositeUser
     public String toString()
     {
         return userID;
+    }
+    
+    public long getTimestamp() {
+        return creationTime;
     }
 }

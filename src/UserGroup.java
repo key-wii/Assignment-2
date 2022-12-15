@@ -6,6 +6,7 @@ public class UserGroup implements CompositeUser
 {
     //Unique group id
     private String groupID;
+    private long creationTime;
 
     //Holds group of users
     private ArrayList<CompositeUser> groupUsers;
@@ -14,6 +15,7 @@ public class UserGroup implements CompositeUser
     {
         groupID = id;
         groupUsers = new ArrayList<CompositeUser>();
+        this.creationTime = System.currentTimeMillis();
     }
     
     //Accessor Methods
@@ -46,5 +48,9 @@ public class UserGroup implements CompositeUser
     public String toString()
     {
         return groupID;
+    }
+    
+    public long getTimestamp() {
+        return creationTime;
     }
 }

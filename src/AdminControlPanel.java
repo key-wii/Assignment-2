@@ -57,6 +57,8 @@ public class AdminControlPanel extends javax.swing.JFrame
     private MessageCount messageTotal = new MessageCount();
     private PosMessageCount posPercentage = new PosMessageCount();
     
+    Vector<String> IDs = new Vector<String>();
+    
     private void LoadTree()
     {
         System.out.println("Run");
@@ -102,6 +104,8 @@ public class AdminControlPanel extends javax.swing.JFrame
         groupID = new javax.swing.JTextArea();
         TreeView = new javax.swing.JScrollPane();
         rootTree = new javax.swing.JTree();
+        verifyID = new javax.swing.JButton();
+        showLastUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +183,20 @@ public class AdminControlPanel extends javax.swing.JFrame
         });
         TreeView.setViewportView(rootTree);
 
+        verifyID.setText("User/Group ID verification");
+        verifyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyIDActionPerformed(evt);
+            }
+        });
+
+        showLastUser.setText("Show Last User");
+        showLastUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showLastUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,23 +208,26 @@ public class AdminControlPanel extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(openUserView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(addGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(addUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(showUserTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(showMessageTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(showGroupTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(showPosPercent, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addGap(37, 37, 37)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(addUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(showUserTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(showMessageTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(showGroupTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(showPosPercent, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(showLastUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(verifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -215,7 +236,7 @@ public class AdminControlPanel extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TreeView)
+                    .addComponent(TreeView, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(addUser, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
@@ -226,7 +247,11 @@ public class AdminControlPanel extends javax.swing.JFrame
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(openUserView, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(verifyID, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                            .addComponent(showLastUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(showGroupTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                             .addComponent(showUserTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -243,7 +268,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //This method should set up if the user clicks on the group it is current group
     private void rootTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rootTreeMouseClicked
         
-        // TODO add your handling code here:
         System.out.println("Clicked on Tree");
         
         //Getting last value you clicked
@@ -269,7 +293,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //If add user from text area if button is pressed
     private void addUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addUserMouseClicked
 
-        // TODO add your handling code here:
         TreeSelectionModel smd = rootTree.getSelectionModel();
         
         if (smd.getSelectionCount() > 0 && groupSelected != null)
@@ -279,6 +302,10 @@ public class AdminControlPanel extends javax.swing.JFrame
             
             DefaultMutableTreeNode currNode = (DefaultMutableTreeNode) rootTree.getSelectionPath().getLastPathComponent();
             DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser);
+            IDs.add(newNode.toString());
+            //DEBUG
+            //JFrame frame = new JFrame();
+            //JOptionPane.showMessageDialog(frame, newNode.toString());
             
             currNode.add(newNode);
             groupSelected.addUserToGroup(newUser);
@@ -296,7 +323,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //If add group from text area if button is pressed
     private void addGroupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGroupMouseClicked
         
-        // TODO add your handling code here:
         TreeSelectionModel smd = rootTree.getSelectionModel();
         
         if (smd.getSelectionCount() > 0 && groupSelected != null)
@@ -322,7 +348,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //When User is selected and Open USER VIEW
     private void openUserViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openUserViewMouseClicked
         
-        // TODO add your handling code here:
         System.out.println("User View Button Pressed");
         
         if (userSelected != null)
@@ -336,7 +361,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //Show user total popup when clicked
     private void showUserTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showUserTotalMouseClicked
         
-        // TODO add your handling code here:
         JFrame frame = new JFrame();
         
         JOptionPane.showMessageDialog(frame, "Total Users: " + userTotal.getTotalUser());
@@ -346,7 +370,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //Show group total popup when clicked
     private void showGroupTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showGroupTotalMouseClicked
         
-        // TODO add your handling code here:
         JFrame frame = new JFrame();
         
         JOptionPane.showMessageDialog(frame, "Total Groups: " + groupTotal.getTotalGroup());
@@ -356,7 +379,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //Show message total popup when clicked
     private void showMessageTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMessageTotalMouseClicked
         
-        // TODO add your handling code here:
         JFrame frame = new JFrame();
         
         JOptionPane.showMessageDialog(frame, "Total Messages: " + messageTotal.getTotalMessage());
@@ -366,7 +388,6 @@ public class AdminControlPanel extends javax.swing.JFrame
     //Show positive message percentage pop when clicked
     private void showPosPercentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPosPercentMouseEntered
         
-        // TODO add your handling code here:
         JFrame frame = new JFrame();
         
         posPercentage.visitUser(userSelected);
@@ -374,6 +395,36 @@ public class AdminControlPanel extends javax.swing.JFrame
         JOptionPane.showMessageDialog(frame, "Positive Message Percentage: " + posPercentage.getPosMessage() + "%");
         
     }//GEN-LAST:event_showPosPercentMouseEntered
+
+    private void verifyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyIDActionPerformed
+        // TODO add your handling code here:
+        boolean invalidID = false;
+        for (int i = 0; i < IDs.size(); i++) {
+            if (IDs.elementAt(i).contains(" ")) {
+               invalidID = true;
+               break;
+            }
+            for (int j = i + 1; j < IDs.size(); j++) {
+                if (IDs.elementAt(i).equals(IDs.elementAt(j))) {
+                   // got the duplicate element
+                   invalidID = true;
+                   break;
+                }
+            }
+        }
+
+        JFrame frame = new JFrame();
+        if (invalidID) { 
+            JOptionPane.showMessageDialog(frame, "Invalid ID(s)");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Valid ID(s)");
+        }
+    }//GEN-LAST:event_verifyIDActionPerformed
+
+    private void showLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLastUserActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_showLastUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,9 +471,11 @@ public class AdminControlPanel extends javax.swing.JFrame
     private javax.swing.JButton openUserView;
     private javax.swing.JTree rootTree;
     private javax.swing.JButton showGroupTotal;
+    private javax.swing.JButton showLastUser;
     private javax.swing.JButton showMessageTotal;
     private javax.swing.JButton showPosPercent;
     private javax.swing.JButton showUserTotal;
     private javax.swing.JTextArea userID;
+    private javax.swing.JButton verifyID;
     // End of variables declaration//GEN-END:variables
 }

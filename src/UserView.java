@@ -22,6 +22,7 @@ public class UserView extends javax.swing.JFrame {
         initComponents();
         
         UserName.setText(user.getID());
+        timestamp.setText("Creation Time: " + String.valueOf(user.getTimestamp()));
         currentFollows.setModel(followModel);
         newsFeed.setModel(tweetModel);
         this.user.setFeed(newsFeed);
@@ -62,6 +63,7 @@ public class UserView extends javax.swing.JFrame {
         UserName = new javax.swing.JLabel();
         FollowingLabel = new javax.swing.JLabel();
         NewsFeedLabel = new javax.swing.JLabel();
+        timestamp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +117,8 @@ public class UserView extends javax.swing.JFrame {
         NewsFeedLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         NewsFeedLabel.setText("News Feed");
 
+        timestamp.setText("Created");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,18 +139,19 @@ public class UserView extends javax.swing.JFrame {
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(followUser, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(FollowingLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NewsFeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(FollowingLabel)
+                            .addComponent(NewsFeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(timestamp))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(timestamp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(followUser, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,6 +263,7 @@ public class UserView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JList<String> newsFeed;
     private javax.swing.JButton postTweet;
+    private javax.swing.JLabel timestamp;
     private javax.swing.JTextArea tweetMessage;
     private javax.swing.JTextArea userID;
     // End of variables declaration//GEN-END:variables
