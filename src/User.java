@@ -10,6 +10,7 @@ public class User implements CompositeUser
     //Unique user id
     private String userID;
     private long creationTime;
+    private long lastUpdateTime;
 
     //List of following
     private ArrayList<User> following;
@@ -29,6 +30,7 @@ public class User implements CompositeUser
         this.message = new ArrayList<String>();
         this.newsFeed = new Message();
         this.creationTime = System.currentTimeMillis();
+        this.lastUpdateTime = creationTime;
     }
 
     //Accessor methods
@@ -82,6 +84,7 @@ public class User implements CompositeUser
         for (int i = 0; i < followers.size(); i++)
         {
             followers.get(i).updateFeed(followers.get(i).getFeed());
+            followers.get(i).updateTime();
         }
     }
     
@@ -110,5 +113,21 @@ public class User implements CompositeUser
     
     public long getTimestamp() {
         return creationTime;
+    }
+    
+    public void updateTime() {
+        lastUpdateTime = System.currentTimeMillis();
+    }
+    
+    public long getLastUpdate() {
+        return lastUpdateTime;
+    }
+    
+    public int getSize() {
+        return 0;
+    }
+    
+    public CompositeUser getChildAt(int i) {
+        return this;
     }
 }

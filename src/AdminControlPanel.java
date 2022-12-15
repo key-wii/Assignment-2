@@ -58,6 +58,7 @@ public class AdminControlPanel extends javax.swing.JFrame
     private PosMessageCount posPercentage = new PosMessageCount();
     
     Vector<String> IDs = new Vector<String>();
+    Vector<User> users = new Vector<User>();
     
     private void LoadTree()
     {
@@ -299,13 +300,11 @@ public class AdminControlPanel extends javax.swing.JFrame
         {
             System.out.println("Add User Button Pressed");
             User newUser = new User(userID.getText());
+            users.add(newUser);
             
             DefaultMutableTreeNode currNode = (DefaultMutableTreeNode) rootTree.getSelectionPath().getLastPathComponent();
             DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser);
             IDs.add(newNode.toString());
-            //DEBUG
-            //JFrame frame = new JFrame();
-            //JOptionPane.showMessageDialog(frame, newNode.toString());
             
             currNode.add(newNode);
             groupSelected.addUserToGroup(newUser);
@@ -423,7 +422,15 @@ public class AdminControlPanel extends javax.swing.JFrame
 
     private void showLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLastUserActionPerformed
         // TODO add your handling code here:
-        
+        long max = 0;
+        User lastUser = new User("");
+        for (int i = 0; i < users.size(); i++) {
+            long updateTimestamp = users.elementAt(i).getLastUpdate();
+            if (updateTimestamp > max) max = updateTimestamp;
+            lastUser = users.elementAt(i);
+        }
+        JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame, "Last Updated User: " + lastUser.getID());
     }//GEN-LAST:event_showLastUserActionPerformed
 
     /**

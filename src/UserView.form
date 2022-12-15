@@ -33,19 +33,25 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="postTweet" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="UserName" min="-2" pref="269" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane4" min="-2" pref="222" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="followUser" min="-2" pref="183" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="FollowingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="NewsFeedLabel" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                          <Component id="timestamp" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="creationTimestamp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lastUpdateTimestamp" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="UserName" min="-2" pref="269" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane4" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="followUser" min="-2" pref="183" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="FollowingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="NewsFeedLabel" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -58,7 +64,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="UserName" min="-2" pref="62" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="timestamp" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="creationTimestamp" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lastUpdateTimestamp" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="followUser" min="-2" pref="44" max="-2" attributes="0"/>
@@ -214,9 +223,14 @@
         <Property name="text" type="java.lang.String" value="News Feed"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="timestamp">
+    <Component class="javax.swing.JLabel" name="creationTimestamp">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Created"/>
+        <Property name="text" type="java.lang.String" value="Creation Time"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lastUpdateTimestamp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Last Updated"/>
       </Properties>
     </Component>
   </SubComponents>

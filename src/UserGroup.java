@@ -1,6 +1,8 @@
 //Composite Pattern - holds user and groups
 
 import java.util.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class UserGroup implements CompositeUser
 {
@@ -52,5 +54,17 @@ public class UserGroup implements CompositeUser
     
     public long getTimestamp() {
         return creationTime;
+    }
+    
+    public long getLastUpdate() {
+        return creationTime;
+    }
+    
+    public int getSize() {
+        return groupUsers.size();
+    }
+    
+    public CompositeUser getChildAt(int i) {
+        return groupUsers.get(i);
     }
 }
